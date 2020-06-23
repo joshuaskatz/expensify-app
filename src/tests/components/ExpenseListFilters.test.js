@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import moment from 'moment';
 import { ExpenseListFilters } from '../../components/ExpenseListFilters';
 import { filters, altFilters } from '../fixtures/filters';
-import moment from 'moment';
 
 let setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate, wrapper;
 
@@ -43,7 +43,7 @@ test('should handle text change', () => {
 	expect(setTextFilter).toHaveBeenLastCalledWith(value);
 });
 
-test('should handle sort by date change', () => {
+test('should sort by date', () => {
 	const value = 'date';
 	wrapper.setProps({
 		filters: altFilters
@@ -54,7 +54,7 @@ test('should handle sort by date change', () => {
 	expect(sortByDate).toHaveBeenCalled();
 });
 
-test('should handle sort by amount change', () => {
+test('should sort by amount', () => {
 	const value = 'amount';
 	wrapper.find('select').simulate('change', {
 		target: { value }
@@ -62,7 +62,7 @@ test('should handle sort by amount change', () => {
 	expect(sortByAmount).toHaveBeenCalled();
 });
 
-test('should handle date change', () => {
+test('should handle date changes', () => {
 	const startDate = moment(0).add(4, 'years');
 	const endDate = moment(0).add(8, 'years');
 	wrapper.find('#date-range-picker').prop('onDatesChange')({
@@ -75,6 +75,6 @@ test('should handle date change', () => {
 
 test('should handle date focus changes', () => {
 	const calendarFocused = 'endDate';
-	wrapper.find('#date-range-picker').prop('onFocusChange`')(calendarFocused);
+	wrapper.find('#date-range-picker').prop('onFocusChange')(calendarFocused);
 	expect(wrapper.state('calenderFocused')).toBe(calendarFocused);
 });
