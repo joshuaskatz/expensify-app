@@ -42,11 +42,13 @@
 	},
 	"devDependencies": {},
 	"scripts": {
+		"start": "node server/serber.js",
 		"serve": "live-server public",
 		"build:dev": "webpack",
 		"build:prod": "webpack -p --env production",
 		"dev-server": "webpack-dev-server",
-		"test": "jest --config=jest.config.json"
+		"test": "jest --config=jest.config.json",
+		"heroku-postbuild": "npm run build:prod"
 	},
 	"author": "",
 	"license": "ISC"
