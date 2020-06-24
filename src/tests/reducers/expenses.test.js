@@ -64,5 +64,3 @@ test('should set expenses', () => {
 	});
 	expect(state).toEqual([ expenses[1] ]);
 });
-
-test('');
